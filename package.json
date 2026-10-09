@@ -1,0 +1,61 @@
+{
+  "name": "mmy-ye",
+  "version": "1.1.0",
+  "description": "MMY.YE — لوحة إدارة المراكز والكادر الإعلامي والمعدات والمهام والأرشيف",
+  "author": "MMY.YE",
+  "main": "electron/main.js",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win --publish never"
+  },
+  "devDependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capgo/capacitor-native-biometric": "^7.0.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8"
+  },
+  "build": {
+    "appId": "com.mmy.ye",
+    "productName": "MMY.YE",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "www/**/*",
+      "package.json"
+    ],
+    "win": {
+      "icon": "build/icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "artifactName": "MMY.YE-Setup-${version}.${ext}"
+    },
+    "portable": {
+      "artifactName": "MMY.YE-Portable-${version}.${ext}"
+    }
+  }
+}
